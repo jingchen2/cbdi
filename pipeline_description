@@ -1,0 +1,13 @@
+ 
+# 1. prepare the reference genome: hg19
+cd /data1/jing/CBDI/reference_genome/hg19
+# download
+wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*'
+
+# uncompress each gz file
+for a in *.gz; do gunzip -c $a &gt; uncompressed/`echo $a | sed s/.gz//`; done
+
+# merge all into one fasta file
+cat chr1.fa chr2.fa chr3.fa chr4.fa chr5.fa chr6.fa chr7.fa chr8.fa chr9.fa chr10.fa chr11.fa chr12.fa chr13.fa chr14.fa chr15.fa chr16.fa chr17.fa chr18.fa chr19.fa chr20.fa chr21.fa chr22.fa chrM.fa chrX.fa chrY.fa &gt; hg19.fa
+
+# 
